@@ -1,0 +1,19 @@
+{
+  "name": "react-api-poc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Express API as POC for integration with react client",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "connect-static-file": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2"
+  }
+}

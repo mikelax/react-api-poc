@@ -1,0 +1,15 @@
+{
+  "name": "react-api-poc",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Michael Holtzman <mholtzman@gmail.com>",
+  "keywords": ["react", "express", "starter"],
+  "scripts": {
+    "start": "./node_modules/.bin/concurrently \"yarn server\" \"yarn client\"",
+    "server": "cd api && yarn start",
+    "client": "cd client && yarn start"
+  },
+  "dependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
