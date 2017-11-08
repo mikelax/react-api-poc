@@ -8,7 +8,7 @@ This repo is organized into two separate projects, one for the React client, and
 
 Start scripts/etc are currently not cross-platform compatible. Current set up supports Mac OS / Linux. 
 
-## How to run
+## How to run - on the host
 
 The package.json file in the ROOT folder is present mainly to support npm scripts to run the development environment. 
 
@@ -20,7 +20,19 @@ cd client && yarn install && cd ..
 cd api && yarn install && cd ..
 ```
 
-`yarn start` - This starts both the API server and the react client webpack server. It utilizes [concurrently](https://github.com/kimmobrunfeldt/concurrently) to run both servers in parallel in a single command window. 
+`yarn start` - This starts both the API server and the react client webpack server. It utilizes [concurrently](https://github.com/kimmobrunfeldt/concurrently) to run both servers in parallel in a single command window.
+
+## How to run - using docker
+
+Install [docker](https://www.docker.com/docker-mac) then from the root folder run:
+
+```shell
+# only required for this first build or when a Dockerfile is edited
+docker-compose build 
+
+# to start both the api and client containers
+docker-compose up
+``` 
 
 ## Additional Libraries & Integrations
 
