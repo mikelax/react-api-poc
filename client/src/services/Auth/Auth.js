@@ -5,7 +5,6 @@ import history from './history';
 
 export default class Auth {
 
-  requestedScopes = 'openid profile read:messages write:messages';
   tokenRenewalTimeout;
 
   constructor() {
@@ -15,11 +14,17 @@ export default class Auth {
       redirectUri: process.env.REACT_APP_AUTH0_REDIRECT_URI,
       audience: process.env.REACT_APP_AUTH0_AUDIENCE,
       responseType: 'token id_token',
-      scope: this.requestedScopes
+      scope: Auth.requestedScopes
     });
 
     // schedule a token renewal after page refresh
     this.scheduleRenewal();
+  }
+
+  // TODO not sure I like this pattern here
+  // but used to simulate static properties
+  static get requestedScopes() {
+    return 'openid profile read:messages write:messages';
   }
 
   login = () => {
@@ -55,7 +60,7 @@ export default class Auth {
   setSession = (authResult) => {
     // Set the time that the access token will expire at
     let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    const scopes = authResult.scope || this.requestedScopes || '';
+    const scopes = authResult.scope || Auth.requestedScopes || '';
 
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
