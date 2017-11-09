@@ -49,8 +49,8 @@ This is a basic TODO list of additional libraries and enhancements I want to add
 - [X] Integrate express as API server
 - [ ] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api) (ie. perms)
 - [ ] Enhance [automatic token renewal](https://auth0.com/docs/quickstart/spa/react/05-token-renewal) implementation with better silient.html. Inject variables from server. Also currently redirects back to homepage.
-- [ ] Secure API with [JWT verification](https://auth0.com/docs/jwks)
-- [ ] Implement login page with [custom Lock](https://auth0.com/docs/libraries/lock/v10) implementation
+- [X] Secure API with [JWT verification](https://auth0.com/docs/jwks)
+- [X] Implement login page with [custom Lock](https://auth0.com/docs/libraries/lock/v10) implementation
 - [ ] CSS preprocessor [integration](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
 - [ ] flow - [Currently integrated](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-flow) but not fully covered
 - [ ] Restart express server on code changes. Maybe [nodemon](https://github.com/remy/nodemon)
