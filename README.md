@@ -32,7 +32,7 @@ docker-compose build
 
 # to start both the api and client containers
 docker-compose up
-``` 
+```
 
 ## Additional Libraries & Integrations
 
