@@ -3,10 +3,14 @@ services:
   api:
     build: ./api
     ports: ["3001:3001"]
-    volumes: ['./api:/app']
+    volumes:
+      - ./api:/app:delegated
   client:
     build: ./client
-    ports: ["3000:3000"]
-    volumes: ['./client:/app']
     depends_on:
       - api
+    links:
+       - api:localhost
+    ports: ["3000:3000"]
+    volumes:
+      - ./client:/app:delegated
