@@ -9,8 +9,6 @@ services:
     build: ./client
     depends_on:
       - api
-    links:
-       - api:localhost
     ports: ["3000:3000"]
     volumes:
       - ./client:/app:delegated
