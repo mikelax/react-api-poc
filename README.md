@@ -24,7 +24,11 @@ cd api && yarn install && cd ..
 
 ## How to run - using docker
 
-Install [docker](https://www.docker.com/docker-mac) then from the root folder run:
+Install [docker](https://www.docker.com/docker-mac)
+
+Edit [package.json](./client/package.json) and set `"proxy": "http://api:3001/"`
+
+From the root folder run:
 
 ```shell
 # only required for this first build or when a Dockerfile is edited
