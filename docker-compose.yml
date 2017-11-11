@@ -1,0 +1,14 @@
+version: '3'
+services:
+  api:
+    build: ./api
+    ports: ["3001:3001"]
+    volumes:
+      - ./api:/app:delegated
+  client:
+    build: ./client
+    depends_on:
+      - api
+    ports: ["3000:3000"]
+    volumes:
+      - ./client:/app:delegated

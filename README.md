@@ -8,7 +8,7 @@ This repo is organized into two separate projects, one for the React client, and
 
 Start scripts/etc are currently not cross-platform compatible. Current set up supports Mac OS / Linux. 
 
-## How to run
+## How to run - on the host
 
 The package.json file in the ROOT folder is present mainly to support npm scripts to run the development environment. 
 
@@ -20,7 +20,23 @@ cd client && yarn install && cd ..
 cd api && yarn install && cd ..
 ```
 
-`yarn start` - This starts both the API server and the react client webpack server. It utilizes [concurrently](https://github.com/kimmobrunfeldt/concurrently) to run both servers in parallel in a single command window. 
+Edit [package.json](./client/package.json) and set `"proxy": "http://localhost:3001/"`
+
+`yarn start` - This starts both the API server and the react client webpack server. It utilizes [concurrently](https://github.com/kimmobrunfeldt/concurrently) to run both servers in parallel in a single command window.
+
+## How to run - using docker
+
+Install [docker](https://www.docker.com/docker-mac)
+
+From the root folder run:
+
+```shell
+# only required for this first build or when a Dockerfile is edited
+docker-compose build 
+
+# to start both the api and client containers
+docker-compose up
+```
 
 ## Additional Libraries & Integrations
 
@@ -35,7 +51,12 @@ cd api && yarn install && cd ..
 This is a basic TODO list of additional libraries and enhancements I want to add to this POC to get it closer to a true starting point for a new project. 
 
 - [X] Integrate express as API server
-- [ ] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api) (ie. perms)
+- [ ] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api)
+    - perms - [Authorization Extension](https://auth0.com/docs/extensions/authorization-extension/v2). Create perms, assign to roles/groups, then create Rule to enforce scopes requested.
+- [ ] Database migrations framework
+    - node-pg-migrate
+    - db-migrate
+    - node-db-migrate
 - [ ] Enhance [automatic token renewal](https://auth0.com/docs/quickstart/spa/react/05-token-renewal) implementation with better silient.html. Inject variables from server. Also currently redirects back to homepage.
 - [X] Secure API with [JWT verification](https://auth0.com/docs/jwks)
 - [X] Implement login page with [custom Lock](https://auth0.com/docs/libraries/lock/v10) implementation
