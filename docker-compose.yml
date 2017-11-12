@@ -1,7 +1,12 @@
 version: '3'
 services:
+  # db:
+  #   image: postgres/9.6.5-alpine
+  #   restart: always
   api:
     build: ./api
+    # depends_on:
+    #   - db
     ports: ["3001:3001"]
     volumes:
       - ./api:/app:delegated

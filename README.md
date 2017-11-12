@@ -44,6 +44,8 @@ docker-compose up
 - [Auth0](https://auth0.com/docs/quickstart/spa/react)
 - [React Router](https://reacttraining.com/react-router/web/guides/philosophy) v4
 - [React Bootstrap](https://react-bootstrap.github.io/)
+- Docker
+- Postgres 9.6
 - Auth0 automatic token renewal
 
 # TODO
@@ -54,6 +56,7 @@ This is a basic TODO list of additional libraries and enhancements I want to add
 - [ ] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api)
     - perms - [Authorization Extension](https://auth0.com/docs/extensions/authorization-extension/v2). Create perms, assign to roles/groups, then create Rule to enforce scopes requested.
 - [ ] Database migrations framework
+    - knex
     - node-pg-migrate
     - db-migrate
     - node-db-migrate
