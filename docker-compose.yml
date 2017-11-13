@@ -1,7 +1,15 @@
 version: '3'
 services:
+  db:
+    image: postgres:9.6.5-alpine
+    restart: always
+    ports: ["5432:5432"]
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
   api:
     build: ./api
+    depends_on:
+      - db
     ports: ["3001:3001"]
     volumes:
       - ./api:/app:delegated

@@ -1,3 +1,6 @@
+# ENV Config files
+.env
+
 # Misc os/editor files
 
 .DS_Store

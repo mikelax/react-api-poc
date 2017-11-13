@@ -27,10 +27,14 @@ Edit [package.json](./client/package.json) and set `"proxy": "http://localhost:3
 ## How to run - using docker
 
 Install [docker](https://www.docker.com/docker-mac)
+NOTE: Config values for some container parameters (ie. db) are set up using [env files](https://docs.docker.com/compose/environment-variables/).
 
 From the root folder run:
 
 ```shell
+# Pull public postgres docker library
+docker pull postgres
+
 # only required for this first build or when a Dockerfile is edited
 docker-compose build 
 
@@ -44,6 +48,8 @@ docker-compose up
 - [Auth0](https://auth0.com/docs/quickstart/spa/react)
 - [React Router](https://reacttraining.com/react-router/web/guides/philosophy) v4
 - [React Bootstrap](https://react-bootstrap.github.io/)
+- Docker
+- Postgres 9.6
 - Auth0 automatic token renewal
 
 # TODO
@@ -54,6 +60,7 @@ This is a basic TODO list of additional libraries and enhancements I want to add
 - [ ] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api)
     - perms - [Authorization Extension](https://auth0.com/docs/extensions/authorization-extension/v2). Create perms, assign to roles/groups, then create Rule to enforce scopes requested.
 - [ ] Database migrations framework
+    - knex
     - node-pg-migrate
     - db-migrate
     - node-db-migrate
