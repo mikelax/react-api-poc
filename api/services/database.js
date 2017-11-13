@@ -1,9 +1,10 @@
-const pg = require('knex')({
+const config = require('../config/config');
+
+const knex = require('knex')({
   client: 'pg',
-  // connection: process.env.PG_CONNECTION_STRING,
-  connection: 'postgresql://postgres@db:5432/postgres',
+  connection: config.PG_CONNECTION_STRING,
   searchPath: 'public',
   pool: { min: 0, max: 7 }
 });
 
-module.exports = pg;
+module.exports = knex;

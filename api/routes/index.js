@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const database = require('../services/database');
+const knex = require('../services/database');
 const security = require('../middleware/security');
 
 router.get('/', (req, res, next) => {
@@ -14,14 +14,13 @@ router.get('/test', security.checkJwt(), security.checkScopes(['read:messages'])
 });
 
 router.get('/test/db', security.checkJwt(), security.checkScopes(['read:messages']), (req, res) => {
-  res.json({ date: 'thedate' });
-  // database.select('current_timestamp')
-  // .then(rows => {
-  //   return rows[0].current_timestamp;
-  // })
-  // .then(date => {
-  //   res.json({ date: date });
-  // });
+  knex.select(knex.raw('current_timestamp as currdate'))
+  .then(rows => {
+    return rows[0].currdate;
+  })
+  .then(date => {
+    res.json({ date: date });
+  });
 });
 
 module.exports = router;

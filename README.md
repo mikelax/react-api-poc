@@ -27,10 +27,14 @@ Edit [package.json](./client/package.json) and set `"proxy": "http://localhost:3
 ## How to run - using docker
 
 Install [docker](https://www.docker.com/docker-mac)
+NOTE: Config values for some container parameters (ie. db) are set up using [env files](https://docs.docker.com/compose/environment-variables/).
 
 From the root folder run:
 
 ```shell
+# Pull public postgres docker library
+docker pull postgres
+
 # only required for this first build or when a Dockerfile is edited
 docker-compose build 
 
