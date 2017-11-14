@@ -7,7 +7,7 @@ const cors = require('cors');
 const express = require("express");
 const staticFile = require('connect-static-file');
 
-const index = require('./routes/index');
+import index from 'routes/index';
 
 const app = express();
 app.set("port", process.env.PORT || 3001);
@@ -28,4 +28,4 @@ app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
 });
 
-module.exports = app;
+export default app;
