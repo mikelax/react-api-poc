@@ -48,8 +48,9 @@ docker-compose up
 - [Auth0](https://auth0.com/docs/quickstart/spa/react)
 - [React Router](https://reacttraining.com/react-router/web/guides/philosophy) v4
 - [React Bootstrap](https://react-bootstrap.github.io/)
-- Docker
-- Postgres 9.6
+- [Docker](https://www.docker.com/)
+- [Postgres 9.6](https://www.postgresql.org/docs/9.6/static/index.html)
+- [Webpack3](https://webpack.js.org/) with [babel](https://babeljs.io/) on the API for ES6/ES7 language features
 - Auth0 automatic token renewal
 
 # TODO
@@ -69,7 +70,7 @@ This is a basic TODO list of additional libraries and enhancements I want to add
 - [X] Implement login page with [custom Lock](https://auth0.com/docs/libraries/lock/v10) implementation
 - [ ] CSS preprocessor [integration](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
 - [ ] flow - [Currently integrated](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-flow) but not fully covered
-- [ ] Restart express server on code changes. Maybe [nodemon](https://github.com/remy/nodemon)
+- [X] Restart express server on code changes. Maybe [nodemon](https://github.com/remy/nodemon)
 - [ ] CI/CD Set up
 - [ ] Google Tag Manager / Google Analytics - Possible [page tracking option](https://www.pmg.com/blog/tracking-single-page-web-apps-google-tag-manager-analytics/)
 - [ ] Better Handling of ENV variables for multiple environments

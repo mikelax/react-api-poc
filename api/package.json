@@ -9,7 +9,6 @@
     "start": "webpack --watch & nodemon --watch dist dist/index.js & wait"
   },
   "dependencies": {
-    "babel-core": "^6.26.0",
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "connect-static-file": "^2.0.0",
