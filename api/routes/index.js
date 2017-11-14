@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const knex = require('../services/database');
-const security = require('../middleware/security');
+import knex from 'services/database';
+import security from 'middleware/security';
 
 router.get('/', (req, res, next) => {
   res.send('API Index');
@@ -23,4 +23,4 @@ router.get('/test/db', security.checkJwt(), security.checkScopes(['read:messages
   });
 });
 
-module.exports = router;
+export default router;
