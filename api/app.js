@@ -9,8 +9,15 @@ const staticFile = require('connect-static-file');
 
 import index from 'routes/index';
 
+import {Model} from 'objection';
+import knex from 'services/knex';
+
 const app = express();
 app.set("port", process.env.PORT || 3001);
+
+// wire misc things together
+
+Model.knex(knex);
 
 // set up basic middleware
 app.use(bodyParser.json());

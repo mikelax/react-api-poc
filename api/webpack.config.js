@@ -46,12 +46,15 @@ module.exports = {
     }
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel-loader'],
-        exclude: path.join(__dirname, 'node_modules')
+    rules: [{
+      test: /\.js$/,
+      exclude: path.join(__dirname, 'node_modules'),
+      use: {
+        loader: 'babel-loader',
+        query: {
+          presets: ['stage-0']
+        }
       }
-    ]
+    }]
   }
 };

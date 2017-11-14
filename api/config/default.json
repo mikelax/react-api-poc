@@ -1,0 +1,9 @@
+{
+  "database": {
+    "pool": {
+      "min": 0,
+      "max": 7
+    },
+    "searchPath": "public"
+  }
+}

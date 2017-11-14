@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-import knex from 'services/database';
 import security from 'middleware/security';
+import Campaign from 'models/campaign';
 
 router.get('/', (req, res, next) => {
   res.send('API Index');
@@ -21,6 +21,13 @@ router.get('/test/db', security.checkJwt(), security.checkScopes(['read:messages
   .then(date => {
     res.json({ date: date });
   });
+});
+
+router.get('/campaigns/:id', (req, res) => {
+  Campaign
+    .query()
+    .where('id', req.params.id)
+    .then(campaign => res.json(campaign))
 });
 
 export default router;
