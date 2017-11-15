@@ -5,11 +5,11 @@
   <script src="https://cdn.auth0.com/js/auth0/8.10.1/auth0.min.js"></script>
   <script>
     var webAuth = new auth0.WebAuth({
-      domain: 'forgingadventures.auth0.com',
-      clientID: 'xxx',
+      domain: '<%= domain %>',
+      clientID: '<%= clientID %>',
       scope: 'openid profile',
       responseType: 'token id_token',
-      redirectUri: 'http://localhost:3000'
+      redirectUri: '<%= redirectUri %>'
     });
   </script>
   <script>
