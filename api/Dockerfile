@@ -1,4 +1,4 @@
-FROM node:8.9.0-wheezy
+FROM node:8.9.1-alpine
 
 # Create app directory
 WORKDIR /app
