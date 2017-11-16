@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           notes: 'mark my words',
           gameSettings: {
             minPlayers: 3,
-            maxPlayer: 5,
+            maxPlayers: 5,
             skillLevel: 2,
             postingFrequency: 3
           }

@@ -23,11 +23,4 @@ router.get('/test/db', security.checkJwt(), security.checkScopes(['read:messages
   });
 });
 
-router.get('/campaigns/:id', (req, res) => {
-  Campaign
-    .query()
-    .where('id', req.params.id)
-    .then(campaign => res.json(campaign))
-});
-
 export default router;

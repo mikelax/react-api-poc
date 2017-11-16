@@ -42,6 +42,11 @@ docker-compose build
 docker-compose up
 ```
 
+## GraphQL
+
+The API server presents a graphql endpoint via `/graphql`. The [Graphiql](https://github.com/graphql/graphiql) browser 
+is also accessible via [http://localhost:3001](http://localhost:3001)
+
 ## Additional Libraries & Integrations
 
 - Server API powered by Express

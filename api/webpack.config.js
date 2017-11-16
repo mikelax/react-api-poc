@@ -40,6 +40,7 @@ module.exports = {
       middleware: pathToSrc('middleware'),
       models: pathToSrc('models'),
       routes: pathToSrc('routes'),
+      schemas: pathToSrc('schemas'),
       services: pathToSrc('services'),
 
       app: pathToSrc('app.js')

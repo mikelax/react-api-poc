@@ -1,5 +1,8 @@
 {
   "database": {
     "connection": "postgresql://postgres:docker@db:5432/postgres"
+  },
+  "graphql": {
+    "graphiql": true
   }
 }
