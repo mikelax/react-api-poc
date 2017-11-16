@@ -1,12 +1,12 @@
 // @flow
 
-const bodyParser = require('body-parser');
-const compression = require('compression');
+import bodyParser from 'body-parser';
+import compression from 'compression';
 import config from 'config';
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const express = require("express");
-const staticFile = require('connect-static-file');
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
 
 import {graphqlExpress, graphiqlExpress} from 'apollo-server-express';
 import {Model} from 'objection';
@@ -17,6 +17,14 @@ import schema from 'schemas';
 
 const app = express();
 app.set("port", process.env.PORT || 3001);
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// set up helmet, basic security checklist
+app.use(helmet({
+  dnsPrefetchControl: false,
+  hsts: false // TODO need dev to run under https first
+}));
 
 // wire misc things together
 
@@ -38,7 +46,13 @@ if (config.get('graphql.graphiql')) {
 }
 
 // set up basic routes
-app.use('/silent', staticFile('static/silent.html'));
+app.use('/silent', (req, res) => {
+  res.render('pages/silent', { 
+    clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
+    domain: 'forgingadventures.auth0.com',
+    redirectUri: 'http://localhost:3000'
+  });
+});
 app.use('/api', index);
 
 // Start server

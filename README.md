@@ -71,14 +71,11 @@ schemas in the [schemas](./api/schemas) folder.
 This is a basic TODO list of additional libraries and enhancements I want to add to this POC to get it closer to a true starting point for a new project. 
 
 - [X] Integrate express as API server
-- [ ] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api)
-    - perms - [Authorization Extension](https://auth0.com/docs/extensions/authorization-extension/v2). Create perms, assign to roles/groups, then create Rule to enforce scopes requested.
-- [X] Database migrations framework
-    - knex <------
-    - node-pg-migrate
-    - db-migrate
-    - node-db-migrate
-- [ ] Enhance [automatic token renewal](https://auth0.com/docs/quickstart/spa/react/05-token-renewal) implementation with better silient.html. Inject variables from server. Also currently redirects back to homepage.
+- [X] Enhance Auth0 integration with [SPA / API guide](https://auth0.com/docs/architecture-scenarios/application/spa-api)
+    - perms - [Authorization Extension](https://auth0.com/docs/extensions/authorization-extension/v2). Create perms, assign to roles, then create Rule to enforce scopes requested.
+- [ ] Automatically Add new User (after Sign Up) to Auth0 Role
+- [X] Database migrations framework - knex
+- [X] Enhance [automatic token renewal](https://auth0.com/docs/quickstart/spa/react/05-token-renewal) implementation with better silient.html. Inject variables from server. Also currently redirects back to homepage.
 - [X] Secure API with [JWT verification](https://auth0.com/docs/jwks)
 - [X] Implement login page with [custom Lock](https://auth0.com/docs/libraries/lock/v10) implementation
 - [ ] CSS preprocessor [integration](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
