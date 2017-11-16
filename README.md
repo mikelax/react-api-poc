@@ -44,8 +44,15 @@ docker-compose up
 
 ## GraphQL
 
-The API server presents a graphql endpoint via `/graphql`. The [Graphiql](https://github.com/graphql/graphiql) browser 
+The API server presents a [GraphQL](http://graphql.org) endpoint via `/graphql`. The [GraphiQL](https://github.com/graphql/graphiql) browser 
 is also accessible via [http://localhost:3001](http://localhost:3001)
+
+An [introduction](http://graphql.org/learn/) to GraphQL language and schema syntax
+definitions can be be found [here](http://graphql.org/graphql-js/).
+
+This project uses [Apollo graphql-tools](https://www.apollographql.com/docs/graphql-tools/) to define graphQL
+schemas in the [schemas](./api/schemas) folder.
+
 
 ## Additional Libraries & Integrations
 
@@ -56,6 +63,7 @@ is also accessible via [http://localhost:3001](http://localhost:3001)
 - [Docker](https://www.docker.com/)
 - [Postgres 9.6](https://www.postgresql.org/docs/9.6/static/index.html)
 - [Webpack3](https://webpack.js.org/) with [babel](https://babeljs.io/) on the API for ES6/ES7 language features
+- [Apollo GraphQL Server](https://www.apollographql.com/docs/apollo-server/) Express integration
 - Auth0 automatic token renewal
 
 # TODO
@@ -78,7 +86,7 @@ This is a basic TODO list of additional libraries and enhancements I want to add
 - [X] Restart express server on code changes. Maybe [nodemon](https://github.com/remy/nodemon)
 - [ ] CI/CD Set up
 - [ ] Google Tag Manager / Google Analytics - Possible [page tracking option](https://www.pmg.com/blog/tracking-single-page-web-apps-google-tag-manager-analytics/)
-- [ ] Better Handling of ENV variables for multiple environments
+- [X] Better Handling of ENV variables for multiple environments
 
 
 # Futher Reading
