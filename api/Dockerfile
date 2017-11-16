@@ -7,4 +7,4 @@ ADD . /app
 
 EXPOSE 3001
 
-CMD yarn && yarn start
+CMD yarn && yarn migrate:latest && yarn start
