@@ -48,8 +48,8 @@ if (config.get('graphql.graphiql')) {
 // set up basic routes
 app.use('/silent', (req, res) => {
   res.render('pages/silent', { 
-    clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
-    domain: 'forgingadventures.auth0.com',
+    clientID: config.get('auth0.clientId'),
+    domain: config.get('auth0.domain'),
     redirectUri: 'http://localhost:3000'
   });
 });

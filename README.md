@@ -45,7 +45,7 @@ docker-compose up
 ## GraphQL
 
 The API server presents a [GraphQL](http://graphql.org) endpoint via `/graphql`. The [GraphiQL](https://github.com/graphql/graphiql) browser 
-is also accessible via [http://localhost:3001](http://localhost:3001)
+is also accessible via [http://localhost:3001/graphiql](http://localhost:3001/graphiql)
 
 An [introduction](http://graphql.org/learn/) to GraphQL language and schema syntax
 definitions can be be found [here](http://graphql.org/graphql-js/).

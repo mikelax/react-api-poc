@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+import knex from 'services/knex';
 import security from 'middleware/security';
 import Campaign from 'models/campaign';
 
