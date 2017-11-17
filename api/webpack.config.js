@@ -40,18 +40,22 @@ module.exports = {
       middleware: pathToSrc('middleware'),
       models: pathToSrc('models'),
       routes: pathToSrc('routes'),
+      schemas: pathToSrc('schemas'),
       services: pathToSrc('services'),
 
       app: pathToSrc('app.js')
     }
   },
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel-loader'],
-        exclude: path.join(__dirname, 'node_modules')
+    rules: [{
+      test: /\.js$/,
+      exclude: path.join(__dirname, 'node_modules'),
+      use: {
+        loader: 'babel-loader',
+        query: {
+          presets: ['stage-0']
+        }
       }
-    ]
+    }]
   }
 };

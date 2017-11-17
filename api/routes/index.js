@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
-import knex from 'services/database';
+import knex from 'services/knex';
 import security from 'middleware/security';
+import Campaign from 'models/campaign';
 
 router.get('/', (req, res, next) => {
   res.send('API Index');
