@@ -15,11 +15,19 @@ import index from 'routes/index';
 import knex from 'services/knex';
 import schema from 'schemas';
 
+import logger from 'services/logger';
+
+import logging from 'middleware/logging';
+
 const app = express();
+
+
 app.set("port", process.env.PORT || 3001);
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
+// wire up express morgan with central logging system
+app.use(logging());
 // set up helmet, basic security checklist
 app.use(helmet({
   dnsPrefetchControl: false,
@@ -50,14 +58,14 @@ app.use('/silent', (req, res) => {
   res.render('pages/silent', { 
     clientID: config.get('auth0.clientId'),
     domain: config.get('auth0.domain'),
-    redirectUri: 'http://localhost:3000'
+    redirectUri: config.get('auth0.redirectUri')
   });
 });
 app.use('/api', index);
 
 // Start server
 app.listen(app.get("port"), () => {
-  console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
+  logger.info(`Find the server at: http://localhost:${app.get("port")}/`);
 });
 
 export default app;

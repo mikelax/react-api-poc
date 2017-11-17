@@ -42,6 +42,12 @@ docker-compose build
 docker-compose up
 ```
 
+Use the following command to _shell_ into a docker - for example to open a shell in the api container:
+
+```
+bash -c "clear && docker exec -it reactapipoc_api_1 sh"
+```
+
 ## GraphQL
 
 The API server presents a [GraphQL](http://graphql.org) endpoint via `/graphql`. The [GraphiQL](https://github.com/graphql/graphiql) browser 

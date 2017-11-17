@@ -5,5 +5,8 @@
       "max": 7
     },
     "searchPath": "public"
+  },
+  "logging": {
+    "console": true
   }
 }
