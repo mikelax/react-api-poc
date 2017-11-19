@@ -12,6 +12,8 @@ import Header from '../Header/Header';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 
+import Campaigns from '../Campaigns/Campaigns'
+
 import history from '../../services/Auth/history';
 
 import './App.css';
@@ -53,6 +55,7 @@ class App extends Component<{}> {
               handleAuthentication(props);
               return <Callback {...props} /> 
             }}/>
+            <Route path="/campaigns" component={Campaigns} />
           </div>
         </div>
       </Router>
