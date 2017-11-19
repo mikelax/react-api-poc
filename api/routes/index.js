@@ -1,8 +1,7 @@
-const router = require('express').Router();
-
 import knex from 'services/knex';
 import security from 'middleware/security';
-import Campaign from 'models/campaign';
+
+const router = require('express').Router();
 
 router.get('/', (req, res, next) => {
   res.send('API Index');
@@ -16,12 +15,12 @@ router.get('/test', security.checkJwt(), security.checkScopes(['read:messages'])
 
 router.get('/test/db', security.checkJwt(), security.checkScopes(['read:messages']), (req, res) => {
   knex.select(knex.raw('current_timestamp as currdate'))
-  .then(rows => {
-    return rows[0].currdate;
-  })
-  .then(date => {
-    res.json({ date: date });
-  });
+    .then((rows) => {
+      return rows[0].currdate;
+    })
+    .then((date) => {
+      res.json({ date });
+    });
 });
 
 export default router;
