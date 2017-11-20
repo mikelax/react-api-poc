@@ -26,11 +26,21 @@ const typeDefs = `
   
   # mutations
   type Mutation {
-    createCampaign(
-      title: String!,
-      scenario: String!,
-      overview: String!
-    ): Campaign
+    createCampaign(input: CreateCampaignInput): Campaign
+  }
+  
+  input CreateCampaignInput {
+    title: String!,
+    scenario: String!,
+    overview: String!,
+    gameSettings: GameSettingInput!
+  }
+  
+  input GameSettingInput {
+    minPlayers: Int!,
+    maxPlayers: Int!,
+    skillLevel: Int!,
+    postingFrequency: Int!
   }
 `;
 
@@ -40,9 +50,11 @@ const resolvers = {
     campaigns: () => Campaign.query()
   },
   Mutation: {
-    createCampaign: (obj, body) => {
-      console.log('obj', obj)
-      console.log('body', body)
+    createCampaign: (obj, {input} ) => {
+      return Campaign
+        .query()
+        .insert(input)
+        .returning('*');
     }
   }
 };
