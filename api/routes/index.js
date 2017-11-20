@@ -3,7 +3,7 @@ import security from 'middleware/security';
 
 const router = require('express').Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.send('API Index');
 });
 
@@ -15,9 +15,7 @@ router.get('/test', security.checkJwt(), security.checkScopes(['read:messages'])
 
 router.get('/test/db', security.checkJwt(), security.checkScopes(['read:messages']), (req, res) => {
   knex.select(knex.raw('current_timestamp as currdate'))
-    .then((rows) => {
-      return rows[0].currdate;
-    })
+    .then(rows => rows[0].currdate)
     .then((date) => {
       res.json({ date });
     });

@@ -1,7 +1,6 @@
 import config from 'config';
 import path from 'path';
-
-const winston = require('winston');
+import winston from 'winston';
 
 const transports = [];
 
@@ -17,7 +16,7 @@ if (config.has('logging.console')) {
 }
 
 if (config.has('logging.file') && config.has('logging.folder')) {
-  logFolder = nconf.get('logging.folder') || path.join(__dirname, '../..', 'logs');
+  logFolder = config.get('logging.folder') || path.join(__dirname, '../..', 'logs');
 
   transports.push(new (winston.transports.File)({
     filename: path.join(logFolder, config.get('logging.file')),
@@ -30,9 +29,7 @@ if (config.has('logging.file') && config.has('logging.folder')) {
   }));
 }
 
-winston.configure({
-  transports: transports
-});
+winston.configure({ transports });
 
 export default winston;
 

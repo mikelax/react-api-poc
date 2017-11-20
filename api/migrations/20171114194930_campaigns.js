@@ -1,6 +1,5 @@
 exports.up = function(knex) {
-
-  return knex.schema.createTable('campaigns', function(table) {
+  return knex.schema.createTable('campaigns', (table) => {
     table.increments().primary();
 
     table.string('title');
@@ -17,8 +16,7 @@ exports.up = function(knex) {
     table.text('notes');
 
     table.timestamps();
-  })
-
+  });
 };
 
 exports.down = function(knex) {

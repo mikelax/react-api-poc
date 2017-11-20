@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
             skillLevel: 2,
             postingFrequency: 3
           }
-        },
+        }
       ]);
     });
 };
