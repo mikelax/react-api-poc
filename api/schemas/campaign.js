@@ -18,10 +18,19 @@ const typeDefs = `
     gameSettings: GameSetting!
   }
   
-  # the schema allows the following queries
+  # queries
   type Query {
     campaigns: [Campaign],
     campaign(id: ID!): Campaign!
+  }
+  
+  # mutations
+  type Mutation {
+    createCampaign(
+      title: String!,
+      scenario: String!,
+      overview: String!
+    ): Campaign
   }
 `;
 
@@ -29,6 +38,12 @@ const resolvers = {
   Query: {
     campaign: (obj, { id }) => Campaign.query().findById(id),
     campaigns: () => Campaign.query()
+  },
+  Mutation: {
+    createCampaign: (obj, body) => {
+      console.log('obj', obj)
+      console.log('body', body)
+    }
   }
 };
 

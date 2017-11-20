@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 class ListCampaigns extends Component {
 
   render() {
-    return (
-      <div className="list-campaigns">
-        <h1>Campaigns</h1>
+    const {match} = this.props;
 
-        <div className="list">
-          { this.content() }
-        </div>
-      </div>
-    )
+    return <div className="campaigns-list">
+      <h1>Campaigns</h1>
+
+      <Link to={`${match.url}/create`}>
+        Create a new Campaign
+      </Link>
+
+      {this.content()}
+    </div>
   }
 
   content = () => {
@@ -30,7 +34,6 @@ class ListCampaigns extends Component {
             <li key={id}>{title}</li>
           ))}
         </ul>
-
     }
   }
 }

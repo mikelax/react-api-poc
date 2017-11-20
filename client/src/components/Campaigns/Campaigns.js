@@ -1,47 +1,19 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import { Route } from 'react-router-dom';
 
-class ListCampaigns extends Component {
+import CreateCampaign from './Create/CreateCampaign';
+import ListCampaigns from './List/ListCampaigns';
+
+export default class Campaigns extends Component {
 
   render() {
-    return (
-      <div className="list-campaigns">
-        <h1>Campaigns</h1>
+    const {match} = this.props;
 
-        <div className="list">
-          { this.content() }
-        </div>
+    return (
+      <div className="campaigns">
+        <Route exact path={`${match.url}/create`} component={CreateCampaign}/>
+        <Route exact path={`${match.url}`} component={ListCampaigns}/>
       </div>
     )
   }
-
-  content = () => {
-    const { data: { loading, error, campaigns } } = this.props;
-
-    switch(true) {
-      case loading:
-        return <p>Loading...</p>;
-      case error:
-        return <p>Error!</p>;
-      default:
-        return <ul>
-          {campaigns.map(({ id, title }) => (
-            <li key={id}>{title}</li>
-          ))}
-        </ul>
-
-    }
-  }
 }
-
-const CampaignsQuery = gql`
-  query {
-    campaigns{
-      id
-      title
-    }
-  }
-`;
-
-export default graphql(CampaignsQuery)(ListCampaigns);
