@@ -10,8 +10,8 @@ const nodeModules = _(fs.readdirSync('node_modules'))
   }, {})
   .value();
 
-function pathToSrc() {
-  return path.join(__dirname, path.join.apply(path, arguments));
+function pathToSrc(...args) {
+  return path.join(__dirname, path.join(...args));
 }
 
 module.exports = {
