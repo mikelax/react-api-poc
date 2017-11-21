@@ -6,8 +6,8 @@ import logger from 'services/logger';
 export default function () {
   const logging = morgan(':method :url :status :res[content-length] - :response-time ms - :requestPayload', {
     stream: {
-      write: message => {
-        logger.info(message)
+      write: (message) => {
+        logger.info(message);
       }
     }
   });
@@ -33,16 +33,16 @@ export default function () {
   return logging;
 }
 
-///////////////////////
+// /////////////////////
 
 function passwordRemover(key, value) {
   if (_.includes([
-      'password',
-      'newPassword',
-      'newPasswordConfirm'
-    ], key)) {
+    'password',
+    'newPassword',
+    'newPasswordConfirm'
+  ], key)) {
     return '********';
-  } else {
-    return value;
   }
+
+  return value;
 }

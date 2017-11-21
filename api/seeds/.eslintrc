@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "func-names": [0],
+    "no-unused-vars": [2, { "argsIgnorePattern": "Promise" }]
+  }
+}

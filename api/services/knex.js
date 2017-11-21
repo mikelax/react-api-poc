@@ -18,7 +18,7 @@ knex
     const uid = query.__knexQueryUid;
     times[uid] = {
       query,
-      startTime: Date.now(),
+      startTime: Date.now()
     };
   })
   .on('query-response', (response, query) => {
