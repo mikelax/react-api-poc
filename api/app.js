@@ -47,7 +47,10 @@ app.use(cors());
 
 // graphql endpoints
 // TODO add check scopes either on the whole endpoint or per endpoint
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+app.use('/graphql', bodyParser.json(), graphqlExpress((req, res) => ({
+  schema,
+  context: {req, res}
+})));
 
 if (config.get('graphql.graphiql')) {
   app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
