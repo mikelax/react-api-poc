@@ -1,4 +1,4 @@
-import {Model} from 'objection';
+import { Model } from 'objection';
 
 export default class Campaign extends Model {
   static tableName = 'campaigns';

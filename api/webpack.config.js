@@ -4,16 +4,14 @@ const webpack = require('webpack');
 const fs = require('fs');
 
 const nodeModules = _(fs.readdirSync('node_modules'))
-  .filter(function(x) {
-    return ['.bin'].indexOf(x) === -1;
-  })
-  .transform(function(result, mod) {
-    result[mod] = 'commonjs ' + mod;
+  .filter(x => ['.bin'].indexOf(x) === -1)
+  .transform((result, mod) => {
+    result[mod] = `commonjs ${mod}`;
   }, {})
   .value();
 
-function pathToSrc() {
-  return path.join(__dirname, path.join.apply(path, arguments));
+function pathToSrc(...args) {
+  return path.join(__dirname, path.join(...args));
 }
 
 module.exports = {
@@ -30,13 +28,16 @@ module.exports = {
     __dirname: true
   },
   plugins: [
-    new webpack.BannerPlugin(
-      { banner: `require("source-map-support").install({environment: 'node'});`, raw: true, entryOnly: false })
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support").install({environment: \'node\'});',
+      raw: true,
+      entryOnly: false
+    })
   ],
   resolve: {
     extensions: ['.js'],
     alias: {
-      //application aliases
+      // application aliases
       middleware: pathToSrc('middleware'),
       models: pathToSrc('models'),
       routes: pathToSrc('routes'),

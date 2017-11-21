@@ -8,8 +8,8 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 
-import {graphqlExpress, graphiqlExpress} from 'apollo-server-express';
-import {Model} from 'objection';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import { Model } from 'objection';
 
 import index from 'routes/index';
 import knex from 'services/knex';
@@ -22,7 +22,7 @@ import logging from 'middleware/logging';
 const app = express();
 
 
-app.set("port", process.env.PORT || 3001);
+app.set('port', process.env.PORT || 3001);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -55,7 +55,7 @@ if (config.get('graphql.graphiql')) {
 
 // set up basic routes
 app.use('/silent', (req, res) => {
-  res.render('pages/silent', { 
+  res.render('pages/silent', {
     clientID: config.get('auth0.clientId'),
     domain: config.get('auth0.domain'),
     redirectUri: config.get('auth0.redirectUri')
@@ -64,8 +64,8 @@ app.use('/silent', (req, res) => {
 app.use('/api', index);
 
 // Start server
-app.listen(app.get("port"), () => {
-  logger.info(`Find the server at: http://localhost:${app.get("port")}/`);
+app.listen(app.get('port'), () => {
+  logger.info(`Find the server at: http://localhost:${app.get('port')}/`);
 });
 
 export default app;

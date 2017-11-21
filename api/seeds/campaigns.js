@@ -1,9 +1,9 @@
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('campaigns').del()
-    .then(function () {
+    .then(() =>
       // Inserts seed entries
-      return knex('campaigns').insert([
+      knex('campaigns').insert([
         {
           id: 1,
           title: 'FIRST! Campaign',
@@ -16,7 +16,6 @@ exports.seed = function(knex, Promise) {
             skillLevel: 2,
             postingFrequency: 3
           }
-        },
-      ]);
-    });
+        }
+      ]));
 };
