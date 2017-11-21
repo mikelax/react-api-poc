@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-
-import { FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 
 const CreateMessage = class CreateMessage extends Component {
 
-  constructor(props) {
-    super(props); //boo boilerplate
-
-    this.state = {
-      minPlayers: 1,
-      maxPlayers: 10,
-      skillLevel: 1,
-      postingFrequency: 1
-    };
-  }
+  state = {
+    minPlayers: 1,
+    maxPlayers: 10,
+    skillLevel: 1,
+    postingFrequency: 1
+  };
 
   render() {
+    if (this.state.saved) {
+      return <Redirect to="/campaigns"/>;
+    }
+
     return (
       <div className="Create">
         <h1>Create a New Campaign</h1>
@@ -103,7 +103,7 @@ const CreateMessage = class CreateMessage extends Component {
           }
         }
       })
-      .then(() => console.log('arguments', arguments))
+      .then(() => this.setState({ saved: true }))
   }
 };
 
