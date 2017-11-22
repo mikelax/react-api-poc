@@ -9,13 +9,27 @@ import registerServiceWorker from './registerServiceWorker';
 
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
+import { setContext } from 'apollo-link-context';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('access_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : null,
+    }
+  }
+});
+
 const client = new ApolloClient({
-  link: new HttpLink(),
+  link: authLink.concat(new HttpLink()),
   cache: new InMemoryCache()
 });
+
 
 ReactDOM.render(
   <ApolloProvider client={client}>

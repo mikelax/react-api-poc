@@ -50,7 +50,7 @@ const resolvers = {
     campaigns: () => Campaign.query()
   },
   Mutation: {
-    createCampaign: (obj, {input} ) => {
+    createCampaign: (obj, { input }) => {
       return Campaign
         .query()
         .insert(input)

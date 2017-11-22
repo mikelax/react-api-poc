@@ -176,6 +176,10 @@ apollo-client@^2.0.3:
   optionalDependencies:
     "@types/async" "2.0.45"
 
+apollo-link-context@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/apollo-link-context/-/apollo-link-context-1.0.1.tgz#a1a0a53c80abae36fe9cf3685360e0b9c1bb312f"
+
 apollo-link-dedup@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-1.0.2.tgz#bab659dde41f8dd627839142d4dad90e55251110"
@@ -191,7 +195,7 @@ apollo-link@1.0.0:
     apollo-utilities "^0.2.0-beta.0"
     zen-observable "^0.6.0"
 
-apollo-link@^1.0.0:
+apollo-link@^1.0.0, apollo-link@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.0.3.tgz#759c36abeeb99e227eca45f919ee07fb8fee911e"
   dependencies:
