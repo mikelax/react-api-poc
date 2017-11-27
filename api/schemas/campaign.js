@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from 'graphql-tools';
 
 import Campaign from 'models/campaign';
+import schemaScopeGate from 'services/schemaScopeGate';
 
 const typeDefs = `
   type GameSetting {
@@ -46,16 +47,21 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    campaign: (obj, { id }) => Campaign.query().findById(id),
-    campaigns: () => Campaign.query()
+    campaign: (obj, { id }, context) =>
+      schemaScopeGate(['read:messages'], context, () =>
+        Campaign.query().findById(id)),
+
+    campaigns: (obj, params, context) =>
+      schemaScopeGate(['read:messages'], context, () =>
+        Campaign.query())
   },
   Mutation: {
-    createCampaign: (obj, { input }) => {
-      return Campaign
-        .query()
-        .insert(input)
-        .returning('*');
-    }
+    createCampaign: (obj, { input }, context) =>
+      schemaScopeGate(['write:messages'], context, () =>
+        Campaign
+          .query()
+          .insert(input)
+          .returning('*'))
   }
 };
 

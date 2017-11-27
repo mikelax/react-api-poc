@@ -5,6 +5,8 @@
     "es6": true
   },
   "rules": {
+    // LOL no
+    "function-paren-newline": [0],
     // needed overrides
     "no-underscore-dangle": [2, { "allow": ["__knexQueryUid"] }],
 
