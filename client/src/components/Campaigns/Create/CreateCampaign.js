@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
 import { Button, ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+
+import { createCampaign, campaignsQuery } from '../queries';
 
 const CreateMessage = class CreateMessage extends Component {
 
@@ -101,18 +102,18 @@ const CreateMessage = class CreateMessage extends Component {
               postingFrequency: this.state.postingFrequency,
             }
           }
+        },
+        update: (store, { data: { createCampaign } }) => {
+          // Read the data from our cache for this query.
+          const data = store.readQuery({ query: campaignsQuery });
+          // Add our comment from the mutation to the end.
+          data.campaigns.push(createCampaign);
+          // Write our data back to the cache.
+          store.writeQuery({ query: campaignsQuery, data });
         }
       })
       .then(() => this.setState({ saved: true }))
   }
 };
-
-const createCampaign = gql`
-  mutation createCampaign($input: CreateCampaignInput) {
-    createCampaign(input: $input) {
-      id
-    }
-  }
-`;
 
 export default graphql(createCampaign)(CreateMessage);

@@ -1,13 +1,22 @@
 import _ from 'lodash';
+import config from 'config';
 
 export default function(scopes, context, fn) {
   const { req } = context;
+  const { user } = req;
 
-  if (!req.user || typeof req.user.scope !== 'string') {
+  // allow graphiql queries
+  if (config.get('graphql.graphiql')) {
+    if (_.get(req, 'headers.referer', '').match('/graphiql?')) {
+      return fn();
+    }
+  }
+
+  if (!req.user || typeof user.scope !== 'string') {
     throw new Error('Invalid user or scopes within JWT');
   }
 
-  const userScopes = req.user.scope.split(' ');
+  const userScopes = user.scope.split(' ');
   const validScopes = _.intersection(userScopes, scopes);
 
   if (_.isEmpty(validScopes)) {

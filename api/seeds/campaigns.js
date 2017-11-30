@@ -5,7 +5,6 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       knex('campaigns').insert([
         {
-          id: 1,
           title: 'FIRST! Campaign',
           scenario: 'looky here',
           overview: 'I can see your house from here',

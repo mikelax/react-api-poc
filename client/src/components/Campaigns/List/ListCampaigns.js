@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+
+import { campaignsQuery } from '../queries';
 
 class ListCampaigns extends Component {
 
@@ -38,13 +39,4 @@ class ListCampaigns extends Component {
   }
 }
 
-const CampaignsQuery = gql`
-  query {
-    campaigns{
-      id
-      title
-    }
-  }
-`;
-
-export default graphql(CampaignsQuery)(ListCampaigns);
+export default graphql(campaignsQuery)(ListCampaigns);

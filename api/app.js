@@ -18,7 +18,7 @@ import schema from 'schemas';
 import logger from 'services/logger';
 
 import logging from 'middleware/logging';
-import { checkJwt } from 'middleware/security';
+import { checkJwtForGraphiql, checkJwt } from 'middleware/security';
 
 const app = express();
 
@@ -29,8 +29,6 @@ app.set('port', process.env.PORT || 3001);
 app.set('view engine', 'ejs');
 // wire up express morgan with central logging system
 app.use(logging());
-// process the JWR
-app.use(checkJwt());
 // set up helmet, basic security checklist
 app.use(helmet({
   dnsPrefetchControl: false,
@@ -49,14 +47,18 @@ app.use(cookieParser());
 app.use(cors());
 
 // graphql endpoints
-// TODO add check scopes either on the whole endpoint or per endpoint
-app.use('/graphql', bodyParser.json(), graphqlExpress((req, res) => ({
-  schema,
-  context: { req, res }
-})));
-
 if (config.get('graphql.graphiql')) {
+  app.use('/graphql', bodyParser.json(), checkJwtForGraphiql(), graphqlExpress((req, res) => ({
+    schema,
+    context: { req, res }
+  })));
+
   app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
+} else {
+  app.use('/graphql', bodyParser.json(), checkJwt(), graphqlExpress((req, res) => ({
+    schema,
+    context: { req, res }
+  })));
 }
 
 // set up basic routes
