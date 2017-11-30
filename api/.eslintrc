@@ -5,12 +5,17 @@
     "es6": true
   },
   "rules": {
+    // LOL no
+    "function-paren-newline": [0],
     // needed overrides
     "no-underscore-dangle": [2, { "allow": ["__knexQueryUid"] }],
 
     // disabled - disagree with airbnb
     "space-before-function-paren": [0],
     "consistent-return": [0],
+
+    // disabled - makes debgging more difficult
+    "arrow-body-style": [0],
 
     // IMHO, more sensible overrides to existing airbnb error definitions
     "max-len": [2, 120, 4, { "ignoreComments": true, "ignoreUrls": true }],
